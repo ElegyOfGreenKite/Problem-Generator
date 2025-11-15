@@ -64,12 +64,18 @@ void ProblemGenerator::UI_Init()
     ui.get_segNum->setValidator(new QRegularExpressionValidator(re_segNum, ui.get_segNum));
     QRegularExpression re_totNum(R"(^(?:[1-9]\d{0,4}|100000)$)");
     ui.get_totNum->setValidator(new QRegularExpressionValidator(re_totNum, ui.get_totNum));*/
+    QRegularExpression re_minAns(R"(^-?(?:0|[1-9]\d{0,4}|100000)$)");
+    ui.get_minAns->setValidator(new QRegularExpressionValidator(re_minAns, ui.get_minAns));
+    QRegularExpression re_maxAns(R"(^-?(?:0|[1-9]\d{0,4}|100000)$)");
+    ui.get_maxAns->setValidator(new QRegularExpressionValidator(re_maxAns, ui.get_maxAns));
     QRegularExpression re_colNum(R"(^(?:[1-9]|[12]\d|30)$)");
     ui.get_colNum->setValidator(new QRegularExpressionValidator(re_colNum, ui.get_colNum));
     loadConfigFromCache();
 }
 void ProblemGenerator::getNums(){
     maxNum = ui.get_maxNum->text().toInt();
+    minAns = ui.get_minAns->text().toInt();
+    maxAns = ui.get_maxAns->text().toInt();
     segNum = ui.get_segNum->text();
 	marginNum = ui.get_marginNum->text().toInt();
     totNum = ui.get_totNum->text();
@@ -201,10 +207,13 @@ void ProblemGenerator::on_saveBtn_clicked()
     }
 
     QTextStream out(&file);
-    out << maxNum << " "
+    out << edition << " "
+        << maxNum << " "
+        << minAns << " "
+        << maxAns << " "
         << colNum << " "
-		<< marginNum << " "
-        << segNum << " " 
+        << marginNum << " "
+        << segNum << " "
         << totNum << " "
         << posRtn << " "
         << borderRtn << " "

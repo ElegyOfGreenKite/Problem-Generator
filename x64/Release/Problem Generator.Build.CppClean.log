@@ -1,15 +1,16 @@
 d:\my_application\qt_demo\application\problem generator\x64\release\vc143.pdb
-d:\my_application\qt_demo\application\problem generator\x64\release\moc_problemgenerator.obj
-d:\my_application\qt_demo\application\problem generator\x64\release\problemgenerator.obj
-d:\my_application\qt_demo\application\problem generator\x64\release\main.obj
 d:\my_application\qt_demo\application\problem generator\x64\release\qrc_problemgenerator.obj
+d:\my_application\qt_demo\application\problem generator\x64\release\main.obj
+d:\my_application\qt_demo\application\problem generator\x64\release\problemgenerator.obj
+d:\my_application\qt_demo\application\problem generator\x64\release\moc_problemgenerator.obj
 d:\my_application\qt_demo\application\x64\release\problem generator.exe
 d:\my_application\qt_demo\application\problem generator\x64\release\qt\moc\moc_problemgenerator.cpp
 d:\my_application\qt_demo\application\problem generator\x64\release\qt\uic\ui_problemgenerator.h
 d:\my_application\qt_demo\application\problem generator\x64\release\qt\rcc\qrc_problemgenerator.cpp
-d:\my_application\qt_demo\application\problem generator\x64\release\problem generator.res
+d:\my_application\qt_demo\application\problem generator\x64\release\problemgenerator.res
 d:\my_application\qt_demo\application\problem generator\x64\release\problem generator.ipdb
 d:\my_application\qt_demo\application\problem generator\x64\release\problem generator.iobj
+d:\my_application\qt_demo\application\problem generator\x64\release\problem generator.res
 d:\my_application\qt_demo\application\problem generator\x64\release\problem .0aa7dfa2.tlog\cl.command.1.tlog
 d:\my_application\qt_demo\application\problem generator\x64\release\problem .0aa7dfa2.tlog\cl.items.tlog
 d:\my_application\qt_demo\application\problem generator\x64\release\problem .0aa7dfa2.tlog\cl.read.1.tlog

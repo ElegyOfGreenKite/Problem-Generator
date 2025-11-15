@@ -111,7 +111,7 @@ protected:
         painter.setPen(Qt::black);
 
         go:QRectF informationRect(0, 50, pageWidth - 100, 150);
-        painter.drawText(informationRect, Qt::AlignRight | Qt::AlignVCenter, u8"班级 __________    姓名  __________    成绩  __________");
+        painter.drawText(informationRect, Qt::AlignRight | Qt::AlignVCenter, u8"班级  __________    姓名  __________    时间  __________    成绩  __________");
 
         // 绘制题目
         for (int c = 0; c < col; ++c) {
@@ -219,8 +219,14 @@ protected:
             return;
         }
 
+        int now_edition;
         QTextStream in(&file);
-        in >> maxNum >> colNum>> marginNum;
+		in >> now_edition;
+        if (now_edition != edition) {
+            file.close();
+            return;
+		}
+        in >> maxNum >> minAns >> maxAns >> colNum >> marginNum;
 
         QString rest = in.readAll().trimmed();
         file.close();
@@ -239,6 +245,8 @@ protected:
         ansRtn = parts[5].toInt();
 
         ui.get_maxNum->setText(QString::number(maxNum));
+        ui.get_minAns->setText(QString::number(minAns));
+        ui.get_maxAns->setText(QString::number(maxAns));
         ui.get_colNum->setText(QString::number(colNum));
 		ui.get_marginNum->setText(QString::number(marginNum));
         ui.get_segNum->setText(segNum); 
@@ -257,11 +265,14 @@ protected:
             else  s += "-", f = -1;
             int num = rand(1, maxNum);
             s += QString("%1").arg(num);
+            if (posRtn && now+num*f < 0){
+                if(cnt>1000000)  return "";
+                cnt++; goto go;
+            }
             now += num * f;
         }
-        if (posRtn && now < 0)
-        {
-            if(cnt>1000000)  return "";
+        if (now<minAns || now>maxAns) {
+            if (cnt > 1000000)  return "";
             cnt++; goto go;
         }
         s += "=";
@@ -278,8 +289,9 @@ private:
     QPoint mousePoint;
     QVector<QString> questions, ans;
     QTimer* timer;
-    int maxNum = 10, colNum = 1, marginNum = 50;
-    int mouse_press = 0, posRtn = 0, borderRtn = 0, portraitRtn = 0, ansRtn = 0, total = 1;
+	const int edition = 5743568; // 版本号
+    int maxNum = 10, colNum = 1, marginNum = 50, minAns = 0, maxAns = 20;
+    int mouse_press = 0, posRtn = 1, borderRtn = 0, portraitRtn = 0, ansRtn = 0, total = 1;
     double m_rec = 1.0;
 
     std::mt19937& global_urng() {
